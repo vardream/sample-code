@@ -1,0 +1,16 @@
+{% extends "advices.twig" %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if content.body %}
+    {% autoescape false %}{{ content.body }}{% endautoescape %}
+  {% endif %}
+{% endblock %}

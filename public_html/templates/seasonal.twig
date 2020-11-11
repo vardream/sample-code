@@ -1,0 +1,21 @@
+{% extends "default.twig" %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% autoescape false %}{{ content.body }}{% endautoescape %}
+  {% if products_discounts %}
+    {% for discounts in products_discounts %}
+      <h4 class="discount_h4">{{ discounts.title }}</h4>
+      <table border="0" cellspacing="8" cellpadding="0" width="100%">
+        {% for item in discounts.items %}
+          <tr class="discount_item">
+            <td class="product_nomenclature">{{ item.nomenclature }}</td>
+            <td class="product_title"><a href="{{ item.url }}">{{ item.title }}</a></td>
+            <td class="product_price">{{ item.old_price }} грн.</td>
+            <td class="product_discount_price"><span>{{ item.price }}</span> грн.</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

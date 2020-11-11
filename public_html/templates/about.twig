@@ -1,0 +1,26 @@
+{% extends "default.twig" %}
+
+{% block sidebar_left_top %}
+  <div class="block_left">
+    <p class="menu_header_left">{{ menu_about.title }}</p>
+    {% for item in menu_about.items %}
+      <a href="{{ item.url }}"
+         class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{{ item.title }}</a>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if content.body %}
+    {% autoescape false %}{{ content.body }}{% endautoescape %}
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "default.twig" %}
+
+{% block before_sidebar_left %}
+  <div class="block_left">
+    <p class="menu_header_left"><i class="fa fa-certificate"></i> НОВИНКИ</p>
+    <p class="menu_item_left">
+      <a href="/products/tag/novelties"
+         class="{% if current == '/products/tag/novelties' %}menu_item_left_current{% else %}menu_item_left{% endif %}">Новинки
+        от MIRRA</a>
+    </p>
+  </div>
+  <div class="block_left">
+    <p class="invitation"><a href="/professional"><img src="/images/mirra_prof.jpg" alt="MIRRA professional"></a></p>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if content.body %}{% autoescape false %}{{ content.body }}{% endautoescape %}{% endif %}
+  {% if chapters %}
+    <div class="nav__chapters">
+      <ul>
+        {% for item in chapters.items %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  {% if sorted %}
+    <div class="nav__pages">
+      <div class="nav__pages__left">
+        <ul class="pagination">
+          <li {% if sorted.current == '' %}class="active"{% endif %}><a href="{{ current }}">По артикулу</a></li>
+          <li {% if sorted.current == 'headline' %}class="active"{% endif %}><a href="{{ current }}?sort=headline">По
+              названию</a></li>
+          <li {% if sorted.current == 'price' %}class="active"{% endif %}><a href="{{ current }}?sort=price">По цене</a>
+          </li>
+        </ul>
+      </div>
+      {% if pagination %}
+        <div class="nav__pages__right">
+          <ul class="pagination">
+            {% for item in pagination.items %}
+              <li {% if item.url == pagination.current %}class="active"{% endif %}><a
+                    href="{{ item.url }}{{ sorted.value }}">{{ item.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if products %}
+    <div id="appShop">
+      {% for item in products.items %}
+        <form action="" class="product__section add_to_cart" @submit.prevent="onAddToCart">
+          <input type="hidden" name="product" value="{{ item.id }}">
+          <div class="product__photo">
+            <a href="{{ item.url }}"><img src="/images/products/{{ item.nomenclature }}.png" alt="{{ item.title }}"></a>
+          </div>
+          <div class="product__notice">
+            <h2><a href="{{ item.url }}">{% autoescape false %}{{ item.title }}{% endautoescape %}</a></h2>
+            <p class="art">Арт. № {{ item.nomenclature }}</p>
+            <div class="product__controls">
+              <p class="product__price">{% if item.old_price %}<span class="product__price_full">{{ item.old_price }} грн.</span> {% endif %}<span>{{ item.price }}</span> грн.</p>
+              {% if item.is_available %}<button class="product__bye_button" type="submit">Купить</button>{% else %}<p>Нет в наличии</p>{% endif %}
+            </div>
+            {% if item.notice %}{% autoescape false %}{{ item.notice }}{% endautoescape %}{% endif %}
+
+          </div>
+        </form>
+      {% endfor %}
+      <shopping-cart :current="current"></shopping-cart>
+    </div>
+  {% endif %}
+{% endblock %}

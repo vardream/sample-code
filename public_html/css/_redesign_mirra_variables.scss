@@ -1,0 +1,103 @@
+@import "fonts-open-sans";
+
+@font-face {
+  @include OpenSans-Regular;
+}
+
+@font-face {
+  @include OpenSans-Italic;
+}
+
+@font-face {
+  @include OpenSans-Bold;
+}
+
+@font-face {
+  @include OpenSans-BoldItalic;
+}
+
+@font-face {
+  @include OpenSans-Light;
+}
+
+@font-face {
+  @include OpenSans-LightItalic;
+}
+
+/* Цвета */
+$hex-color-brand: #009182;
+$hex-color-prof: #0068A1;
+
+$color-text: #333333;
+$color-prof-bright: #31A7E9;
+$color-prof-dark: #365F91;
+$color-white: #FFFFFF;
+$color-green: #348606;
+$color-red: #FF0000;
+
+/* Подбор косметики */
+$color-daily: #7B429A;
+$color-body: #cd4430;
+$color-intensive: #880B3D;
+$color-forming: #E2843F;
+$color-hair: #034930;
+$color-dent: #2770B8;
+$color-baby: #EAABB8;
+$color-prophylactic: #D42D3C;
+$color-intim: #89C558;
+$color-protect: #F5EC49;
+
+$color-brand: hsl(hue($hex-color-brand), saturation($hex-color-brand), lightness($hex-color-brand));
+$color-brand-medium: desaturate(lighten($color-brand, 54%), 45%);
+$color-brand-lighten: desaturate(lighten($color-brand, 64%), 60%);
+
+$color-prof: hsl(hue($hex-color-prof), saturation($hex-color-prof), lightness($hex-color-brand));
+$color-prof-medium: hsl(hue($hex-color-prof), 40%, 79%);
+$color-prof-lighten: hsl(hue($hex-color-prof), 40%, 93%);
+
+$color-text-30: lighten($color-text, 30);
+$color-text-50: lighten($color-text, 50);
+$color-text-70: lighten($color-text, 70);
+$color-action: desaturate(lighten(complement($color-prof), 20%), 10%);
+
+$color-shadow: rgba(0, 0, 0, 0.4);
+
+$font-default: 'Open Sans', Arial, Helvetica, sans-serif;
+$base-font-size: 14px;
+$base-line-height: 1.3em;
+
+$h1-font-size: 20px;
+$h2-font-size: $h1-font-size * 0.9;
+$h3-font-size: $h1-font-size * 0.8;
+
+
+$size-photo: 168px;
+
+$menu-main-font-size: 13px;
+$menu-main-height: 2em;
+
+/** - Макет - **/
+
+$global-gutter: 8px;
+$global-width-body: 940px;
+$global-width-sidebar: ($global-width-body / 12) * 3;  // 200px;
+$global-width-middle-content: $global-width-body - 2 * ($global-width-sidebar + $global-gutter); // 524px;
+
+$nav-menu-add-height: 24px;
+$nav-bar-height: 49px;
+$nav-menu-main-height: 38px;
+
+/* Сетка */
+$col-x1-width: 100% / 12;
+$col-x2-width: 200% / 12;
+$col-x3-width: 300% / 12;
+$col-x4-width: 400% / 12;
+$col-x5-width: 500% / 12;
+$col-x6-width: 600% / 12;
+$col-x7-width: 700% / 12;
+$col-x8-width: 800% / 12;
+$col-x9-width: 900% / 12;
+$col-x10-width: 1000% / 12;
+$col-x11-width: 1100% / 12;
+
+$col-all-width: 100%;

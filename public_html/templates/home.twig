@@ -1,0 +1,67 @@
+{% extends "default.twig" %}
+
+{% block content %}
+  {% if content.body %}
+    {% autoescape false %}{{ content.body }}{% endautoescape %}
+  {% endif %}
+  {# Слайдер "Лидеры продаж" #}
+  {% if tags_leaders %}
+    <p class="bg_green">{{ tags_leaders.title }}</p>
+    <div class="slider_leaders" style="display: none">
+      {% for item in tags_leaders.items %}
+        <div>
+          <div class="slider_item">
+            <div class="slider_image">
+              <a href="{{ item.url }}"><img src="{{ item.image }}" alt="{{ item.title }}"></a>
+            </div>
+            <div class="slider_header">
+              <h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {# eof Слайдер "Лидеры продаж" #}
+  {# Вставка из Facebook #}
+  {% if mode.facebook %}
+    <div>
+      <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FMIRRA.ua%2Fposts%2F1614232545397120%3A0&width=500"
+              width="524"
+              height="{{ 657 * 524 / 500}}"
+              style="border:none;overflow:hidden"
+              scrolling="no"
+              frameborder="0"
+              allowTransparency="true"
+              allow="encrypted-media">
+      </iframe>
+    </div>
+  {% endif %}
+  {# eof Вставка из Facebook #}
+{% endblock %}
+
+{% block footer_article %}
+  <div class="footer__article">
+    <h1 class="text-center">Интернет-магазин натуральной косметики MIRRA</h1>
+    <div class="footer__article_body">
+      <p>В интернет-магазине Мирра вы можете выбрать косметику для ухода за лицом и телом, продукты для макияжа.
+        Созданные на основе тщательно отобранных природных ингредиентов, натуральные средства для очищения,
+        тонизирования, укрепления, омоложения деликатно и эффективно работают с кожей, обеспечивая длительный результат.
+        Сбалансированные формулы учитывают естественные биологические процессы, протекающие в клетках, и максимально
+        точно отвечают требованиям безопасности и качества.</p>
+      <p>Чем обусловлена высокая эффективность косметики Мирра?</p>
+      <ul class="text_ul">
+        <li>Размеры частиц эмульсионных продуктов до 60 нанометров</li>
+        <li>Размеры микрокапсул липосомальных продуктов до 40 нанометров</li>
+        <li>Высокая проникающая способность</li>
+        <li>Однородность структуры продуктов</li>
+        <li>Холодное эмульгирование Биологически Активных Веществ (БАВ)</li>
+        <li>Только натуральное растительное сырье и продукты моря</li>
+        <li>Использование технологически сложных ингредиентов: сложных полимеров, икры и пр.</li>
+      </ul>
+      <p>Чтобы купить косметику на сайте, выберите продукты и оформите доставку онлайн. По Украине посылки доставляются
+        почтой или курьером в течение 1–2 дней.</p>
+      <p>Следите за новостями, чтобы не пропустить распродажи и акции.</p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta name="verify-v1" content="CpP+mQzcSAFo45ak+5curPwbd/gd625AoqeVSO6JKWA=">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% if meta_keywords %}
+    <meta name="keywords" content="{{ meta_keywords }}">
+  {% endif %}
+  {% if meta_description %}
+    <meta name="description" content="{{ meta_description }}">
+  {% endif %}
+
+  {% if mode.developing %}
+    <base href="//mirra.biz.ua.local/">
+  {% else %}
+    <base href="//mirra.biz.ua/">
+    <link rel="dns-prefetch" href="//www.google.com/">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com/">
+    <link rel="dns-prefetch" href="//apis.google.com/">
+    <link rel="dns-prefetch" href="//www.youtube.com/">
+    <link rel="dns-prefetch" href="//connect.facebook.net/">
+  {% endif %}
+
+  <title>{{ meta_title }}</title>
+
+  {% if mode.developing == false %}
+    {# Global site tag (gtag.js) - Google Analytics #}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113485817-1"></script>
+    {# Google "Поделиться"#}
+    <script src="https://apis.google.com/js/platform.js" async defer>{
+        lang: 'ru'
+      }</script>
+    {# Сервис Push
+    <script>
+      (function(i,s,o,g,r,a,m){
+          i["esSdk"] = r;
+          i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, a=s.createElement(o), m=s.getElementsByTagName(o)[0]; a.async=1; a.src=g;
+          m.parentNode.insertBefore(a,m)}
+      ) (window, document, "script", "https://esputnik.com/scripts/v1/public/scripts?apiKey=eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiI0NTI0ZWZhYTJkYzI2MGRmYTM4YTE1NDBlMWFlYjY1M2M4YjE3OTBlMmY0MWRjYjMxYmExNTIzMWRjODY1ODRmNmFlM2Y3MzE1YWJlYmUyOTJjMDk1N2Y0OTM3Mjg2NTA1MmI1YjcxZjQxNzUzNWVkZjE0OTE0ODM2YTVmYjk0MWE3YzliMzI2NzIyYzNiMDViNzZiYjEyM2I2ODM0MTE5MGY4ZGUzOWQ5ZTFmNjAxMyJ9.YCyWDPJNoYWr5vVa1kP8_hxsvnm7imfcrqhQXW5BGegesrpQ2fzq9TAM2N_i0JulmQNPWOT1_uW6jHYsoyZMbA&domain=2C098623-DA3F-4EFD-B1DC-581D35405B26", "es");
+      es("pushOn");
+    </script> #}
+
+  {% endif %}
+
+  {# Подключение stylesheet #}
+  {% if assets.js %}
+    {% for src in assets.css %}
+      <link rel="stylesheet" href="{{ src }}">
+    {% endfor %}
+  {% endif %}
+  <link rel="stylesheet" href="/css/default-20083101.css">
+
+</head>
+<body>
+{% if mode.developing == false %}
+  {# Load Facebook SDK for JavaScript  #}
+{% endif %}
+
+<div class="body__wrapper clear_fix">
+  <div class="top_bar">
+    <ul class="top_bar_phones">
+      <li><span><i class="fa fa-phone color-brand"></i></span> 044 353-94-00</li>
+      <li><span><i class="va va-lifecell-sign color-lifecell"></i></span> 063 508-78-85</li>
+      <li><span><i class="va va-mts-sign color-mts"></i></span> 066 715-45-15</li>
+      <li><span><i class="va va-kyivstar-sign color-kyivstar"></i></span> 067 102-33-78</li>
+      <li><a href="https://t.me/mirra_kos" target="_blank"><i class="tgme_logo"></i></a></li>
+    </ul>
+    <div class="top_bar_items">
+      {# Корзина #}
+      <div id="appShoppingCartInfo">
+        <shopping-cart-info>
+          <a class="shopping_cart_block" href="/order">
+            <div class="shopping_cart_block__icon">
+              <i class="fa fa-shopping-bag fa-2x"></i>
+              <div class="shopping_cart_block__count">
+                <span>{{ cart.total }}</span>
+              </div>
+            </div>
+            <div class="shopping_cart_block__content">
+              <p class="shopping_cart_block__text">Покупки</p>
+              <p class="shopping_cart_block__total"><span>{{ cart.sum }}</span> грн.</p>
+            </div>
+          </a>
+        </shopping-cart-info>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div id="content_left">
+      <div id="header">
+        <a href="/"></a>
+        <div class="band"><a href="/howto">ПОЛУЧИ МАКСИМАЛЬНУЮ СКИДКУ</a></div>
+      </div>
+      <div class="separator8px_white">&nbsp;</div>
+      {# Главное меню вверху #}
+      {% spaceless %}
+        <div class="menu_top">
+          {% if menu_chapters %}
+            <ul>
+              {% for item in menu_chapters.items %}
+                {% if item.url == current %}
+                  <li><a href="{{ item.url }}"><span class='current'>{{ item.title }}</span></a>
+                {% else %}
+                  <li><a href="{{ item.url }}">{{ item.title }}</a>
+                {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% endspaceless %}
+      <div class="separator8px_white">&nbsp;</div>
+      <div id="article">
+        <div id="article_left">
+          {% block sidebar_left_top %}{% endblock %}
+          {% block before_sidebar_left %}
+            <div class="block_left">
+              <p class="invitation"><a href="/howto"><img src="/images/img-181226-01.jpg" srcset="/images/img-181226-01@2x.jpg 2x" alt="Получи максимальную скидку. Клуб MIRRA."></a></p>
+            </div>
+          {% endblock %}
+          {% block sidebar_left %}
+            {# Боковое меню "Новости" #}
+            {% if menu_news %}
+              <div class="block_left">
+                <p class="menu_header_left">{{ menu_news.title }}</p>
+                {% for item in menu_news.items %}
+                  <p class="menu_item_left"><strong class="chars_orange">{{ item.date }}</strong><br/>
+                    <a href="{{ item.url }}" target="{{ item.target }}"
+                       class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{% autoescape false %}{{ item.title }}{% endautoescape %}</a>
+                  </p>
+                {% endfor %}
+                <p class="menu_item_left text-right">
+                  <a href="/news" class="menu_item_left color-action">все новости
+                    <i class="fa fa-chevron-circle-right"></i>
+                  </a>
+                </p>
+              </div>
+            {% endif %}
+            {# Боковое меню "Это интерестно" #}
+            {% if menu_interesting %}
+              <div class="block_left">
+                <p class="menu_header_left">{{ menu_interesting.title }}</p>
+                {% for item in menu_interesting.items %}
+                  <p class="menu_item_left">
+                    <a href="{{ item.url }}" target="{{ item.target }}"
+                       class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{% autoescape false %}{{ item.title }}{% endautoescape %}</a>
+                  </p>
+                {% endfor %}
+                <p class="menu_item_left text-right"><a href="/interesting" class="menu_item_left"
+                                                        style="color:#FF6600">все статьи
+                    <i class="fa fa-chevron-circle-right"></i></a></p>
+              </div>
+            {% endif %}
+            {# Боковое меню "Блог" #}
+            {% if menu_blog %}
+              {% spaceless %}
+                <div class="block_left">
+                  <p class="menu_header_left">{{ menu_blog.title }}</p>
+                  {% for item in menu_blog.items %}
+                    <p class="menu_item_left">
+                      <a href="{{ item.url }}"
+                         class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{% autoescape false %}
+                          {% if item.image %}<img src="{{ item.image }}"
+                                                  {% if item.image2x %}srcset="{{ item.image2x }} 2x"{% endif %}
+                                                  alt="{{ item.title }}">{% endif %}
+                          {{ item.title }}{% endautoescape %}</a>
+                    </p>
+                  {% endfor %}
+                  <p class="menu_item_left text-right">
+                    <a href="/blog" class="menu_item_left color-action">все статьи
+                      <i class="fa fa-chevron-circle-right"></i>
+                    </a>
+                  </p>
+                </div>
+              {% endspaceless %}
+            {% endif %}
+            {# Меню "Косметические линии #}
+            {% if menu_lines %}
+              <div class="block_left">
+                <p class="menu_header_left">{{ menu_lines.title }}</p>
+                {% for item in menu_lines.items %}
+                  <a href="{{ item.url }}"
+                     class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{{ item.title }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {# Меню: Назначение (tags_purpose) #}
+            {% if tags_purpose %}
+              <div class="block_left">
+                <p class="menu_header_left">{{ tags_purpose.title }}</p>
+                {% for item in tags_purpose.items %}
+                  <a href="{{ item.url }}"
+                     class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{{ item.title }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endblock %}
+        </div>
+        <div id="article_right">
+          {# Контент #}
+          {% block content %}
+            <p class="p_h1">{{ content.title }}</p>
+            {% if chain %}
+              <div class="chain">
+                {% for item in chain.items %}
+                  {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+                  {% else %}<a href="{{ item.url }}"
+                               class="chain_link">{{ item.title }}</a> • {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% autoescape false %}{{ content.body }}{% endautoescape %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    {# Правая панель #}
+    <div id="content_right">
+      {# Форма подписки #}
+      <div class="subscribe__container">
+        <p class="subscribe__button">Рассылка <i class="fa fa-caret-down"></i></p>
+        <form class="subscribe__form">
+          <p>Подпишитесь на нашу рассылку акций, новинок и специальных предложений.</p>
+          <input id="subscriber_mail" name="subscriber_mail" type="email" maxlength="64"
+                 placeholder="введите свой e-mail" required value="">
+          <div class="text-center">
+            <button type="submit" value="subscribe">Подписаться</button>
+          </div>
+        </form>
+      </div>
+      {# Информация по заказам #}
+      {# <div class="shopping_info">
+        <p>Сделать заказ Вы можете:</p>
+        <ul>
+          <li>на сайте</li>
+          <li>по e-mail: shop@mirra.biz.ua</li>
+          <li>по телефону<br> с 9:00 до 18:00</li>
+          <li>по SMS</li>
+        </ul>
+      </div> #}
+      {# Меню разделов на правой панели #}
+      {% if menu_sidebar %}
+        <div id="menu_goodslines">
+          {% for item in menu_sidebar.items %}
+            <a class="{% if current == item.url %}menu_item_right_current{% else %}menu_item_right{% endif %}"
+               href="{{ item.url }}">{{ item.title }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {# Вставка "Подбор косметики on-line" на правой панели #}
+      <div
+          style="display: block;	clear: both; text-align: center; background-image: url(/images/css-091030-26.gif); border-top: 1px solid #005950;border-bottom: 1px solid #62BBB2;color: #B4DFD8; font-size: 11pt; line-height: 13pt; margin-top:12px">
+        <p style="margin-bottom: 0">
+          <a href="/chooser" class="a_none">
+            <img src="/images/img-171005-01.png"
+                 alt="Подбор косметики on-line"
+                 title="Подбор косметики on-line" class="a_none" width="168">
+          </a>
+        </p>
+      </div>
+
+      {# Вставка "Сезонный каталог" на правой панели #}
+      <div
+          style="display: block;	clear: both; text-align: center; background-image: url(/images/css-091030-26.gif); border-top: 1px solid #005950;border-bottom: 1px solid #62BBB2;color: #B4DFD8; font-size: 11pt; line-height: 13pt; margin-top:12px">
+        <p class="magazine_head">Сезонный каталог</p>
+        <p style="margin-bottom: 0">
+          <a href="/download/catalog_mirra_2001.pdf" target="_blank">
+            <img src="/images/catalog_mirra_2001.jpg"
+                 srcset="/images/catalog_mirra_2001@2x.jpg 2x"
+                 alt="Сезонный каталог MIRRA"
+                 width="168" height="238"
+                 border="0"/>
+          </a>
+        </p>
+      </div>
+      {# Подписка на YoyTube #}
+      {% if mode.youtube %}
+        <div class="subscribe_youtube__container">
+          <div class="logo_sign"><i class="va va-mirra-logo"></i></div>
+          {% if mode.developing %}
+            <script src="https://apis.google.com/js/platform.js"></script>{% endif %}
+          <div class="g-ytsubscribe" data-channelid="XXXXXXX" data-layout="default"
+               data-count="default"></div>
+          <div class="youtube__video">
+            <p>
+              <a href="https://www.youtube.com/watch?v=n8UMHJuQVmQ" target="_blank"><img
+                    srcset="/images/img-180312-01-x2.png 2x" src="/images/img-180312-01.png"
+                    alt="Очищение жирной и проблемной кожи лица"></a>
+            </p>
+            <h6>
+              <a href="https://www.youtube.com/watch?v=8p99b3bmogw" target="_blank">Очищение жирной и
+                проблемной кожи лица.</a>
+            </h6>
+          </div>
+          <div class="youtube__video">
+            <p>
+              <a href="https://www.youtube.com/watch?v=8p99b3bmogw" target="_blank"><img
+                    srcset="/images/img-171108-01-x2.jpg 2x" src="/images/img-171108-01.png"
+                    alt="Купероз и его профилактика. Бальзам Ангио"></a>
+            </p>
+            <h6>
+              <a href="https://www.youtube.com/watch?v=8p99b3bmogw" target="_blank">Купероз и его
+                профилактика. Бальзам Ангио.</a>
+            </h6>
+          </div>
+        </div>
+      {% endif %}
+      <div style="margin: 0 8px;">
+        <h3 class="color-brand-lighten" style="border-top: 1px solid; border-bottom: 1px solid; line-height: 2.0em;margin: 0 0 8px 0;">
+          Подарок от MIRRA</h3>
+        <p>
+          <a href="http://promo.mirra.biz.ua">
+            <img srcset="/images/img-180507-01@2x.jpg 2x" src="/images/img-180507-01.jpg"
+                 alt="SPA процедура по уходу за кожей лица и зоной декольте">
+          </a></p>
+      </div>
+      {# Ссылки на социальные сети на правой панели #}
+      <ul class="social">
+        <li><a href="https://www.facebook.com/mirra.ua" target="_blank"><i
+                class="fa fa-facebook-official fa-2x"></i></a></li>
+        <li><a href="https://www.youtube.com/channel/UCd0eL8ewNE1jHV5bu9zZ-sQ" target="_blank"><i
+                class="fa fa-youtube fa-2x"></i></a></li>
+        <li><a href="https://www.instagram.com/mirra_kos/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+        </li>
+        <li>
+          <a href="https://www.pinterest.com/mirra924/%D0%BA%D0%BE%D1%81%D0%BC%D0%B5%D1%82%D0%B8%D0%BA%D0%B0-mirra/"
+             target="_blank"><i class="fa fa-pinterest fa-2x"></i></a>
+        </li>
+      </ul>
+    </div>
+    {% spaceless %}
+      {# Главное меню внизу #}
+      <div class="menu_bottom">
+        {% if menu_chapters %}
+          <ul>
+            {% for item in menu_chapters.items %}
+              {% if item.url == current %}
+                <li><a href="{{ item.url }}"><span class='current'>{{ item.title }}</span></a>
+              {% else %}
+                <li><a href="{{ item.url }}">{{ item.title }}</a>
+              {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      {# eof Главное меню внизу #}
+    {% endspaceless %}
+  </div>
+  {# Footer #}
+  <div id="footer">
+    {% block footer_article %}{% endblock %}
+    {# Форма подписки нижняя #}
+    <form method="post" class="subscribe__footer_form">
+      <p class="subscribe__footer_form_header">Узнайте первым о новинках и скидках!</p>
+      <input name="subscriber_mail" type="email" maxlength="64" placeholder="введите свой e-mail" required value="">
+      <button class="product__bye_button" type="submit" value="subscribe">Подписаться</button>
+    </form>
+    <div id="footer_left">
+      <div class="info_footer_left">
+        <p class="info_footer_p">Косметическая компания MIRRA</p>
+      </div>
+    </div>
+    <div id="footer_right">
+      <div class="info_footer_center">
+        <p class="info_footer_p">Наш адрес: г. Киев, 01001, Украина, ул. Ярославская 14/20 (ул. Константиновская
+          20/14) <br>
+          (угол ул. Константиновская и Ярославская, со стороны Ярославской) <br>
+          Метро &laquo;Контрактовая Площадь&raquo; <br>
+          тел.: <i class="fa fa-phone"></i> <strong> 044 353-94-00</strong>,
+          <i class="va va-lifecell-sign color--lifecell"></i> <strong> 063 508-78-85</strong>,
+          <i class="va va-mts-sign color--mts"></i> <strong>066 715-45-15</strong>,
+          <i class="va va-kyivstar-sign color--kyivstar"></i> <strong>067 102-33-78</strong> <br>info@mirra.biz.ua
+        </p></div>
+      <div class="info_footer_right">
+        <p class="info_footer_p">
+          <span class="copyright"><br> &copy; 2008-2019 &laquo;Мирра Люкс&raquo;, Киев</span><br>
+          <span class="copyright">Design and development</span>: <a href="https://vard.in.ua" target="_blank"
+                                                                    class="copyright">VARD</a>
+        </p></div>
+    </div>
+
+  </div>
+  {# eof Footer #}
+</div>
+{% if mode.developing == false %}
+  {# Your customer chat code #}
+  <div class="fb-customerchat"
+       attribution="setup_tool"
+       page_id="825861144234268">
+  </div>
+{%  endif %}
+{# Подключение javascripts #}
+{% if assets.js %}
+  {% for src in assets.js %}
+    <script type="text/javascript" src="{{ src }}"></script>
+  {% endfor %}
+{% endif %}
+</body>
+</html>

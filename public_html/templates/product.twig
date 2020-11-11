@@ -1,0 +1,73 @@
+{% extends "products.twig" %}
+
+{% block content %}
+  <p class="p_h1">{% autoescape false %}{{ content.title }}{% endautoescape %}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if product_tags %}
+    <ul class="tags__purpose">Назначение:
+      {% for item in product_tags.items %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% if content.image %}
+    <div class="goods_image"><img src="{{ content.image }}" alt="{{ item.title }}"></div>
+  {% endif %}
+  {% autoescape false %}
+      {{ content.body }}
+  {% endautoescape %}
+  <div id="appShop">
+    <form action="" class="product__section_single" @submit.prevent="onAddToCart">
+      <input type="hidden" name="product" value="{{ content.id }}">
+      <div class="product__section_table">
+        <table width="100%" border="0">
+          <tr class="tab_th">
+            <th scope="col">Объем</th>
+            <th scope="col" width="25%">Артикул</th>
+            <th scope="col" width="25%">Цена</th>
+          </tr>
+          <tr class="tab_tr_odd">
+            <td align="center">{% autoescape false %}{{ content.volume }}{% endautoescape %}</td>
+            <td align="center" width="20%">{{ content.nomenclature }}</td>
+            <td align="center" width="35%">{% if content.old_price %}<span class="product__price_full">{{ content.old_price }} грн.</span> {% endif %}{{ content.price }} грн.</td>
+          </tr>
+        </table>
+      </div>
+      <div class="product__controls_single">
+        {% if content.is_available %}<button class="product__bye_button" type="submit">Купить</button>{% else %}<p class="text-center">Нет в&nbsp;наличии</p>{% endif %}
+      </div>
+    </form>
+    <shopping-cart :current="current"></shopping-cart>
+  </div>
+
+  {% if videos %}
+    <div class="products_video__block">
+      {% for video in videos %}
+        <p>
+          <a href="{{ video.url }}" target="_blank">
+            {% if video.image %}
+              <img {% if video.image_2x %}
+                srcset="{{ video.image_2x }} 2x"
+              {% endif %}
+                  src="{{ video.image }}"
+                  {% if video.title %}
+                    alt="{{ video.title }}"
+                  {% endif %}
+              >
+            {% endif %}
+          </a>
+        </p>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div id="appComments">
+    <comments content-type="product" :content-item="{{ content.id }}"></comments>
+  </div>
+{% endblock %}

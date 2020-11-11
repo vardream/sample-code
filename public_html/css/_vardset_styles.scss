@@ -1,0 +1,123 @@
+@import "vardset_variables";
+
+@font-face {
+  font-family: 'vardset';
+  src: url('#{$icomoon-font-path}/vardset.eot?192p0r');
+  src: url('#{$icomoon-font-path}/vardset.eot?192p0r#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/vardset.ttf?192p0r') format('truetype'),
+  url('#{$icomoon-font-path}/vardset.woff?192p0r') format('woff'),
+  url('#{$icomoon-font-path}/vardset.svg?192p0r#vardset') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i.va {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'vardset' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.va-kyivstar-sign {
+  &:before {
+    content: $va-kyivstar-sign;
+  }
+}
+
+.va-kyivstar-ua {
+  &:before {
+    content: $va-kyivstar-ua;
+  }
+}
+
+.va-kyivstar-logo-ua {
+  &:before {
+    content: $va-kyivstar-logo-ua;
+  }
+}
+
+.va-lifecell-sign {
+  &:before {
+    content: $va-lifecell-sign;
+  }
+}
+
+.va-lifecell {
+  &:before {
+    content: $va-lifecell;
+  }
+}
+
+.va-lifecell-logo {
+  &:before {
+    content: $va-lifecell-logo;
+  }
+}
+
+.va-mts-sign {
+  &:before {
+    content: $va-mts-sign;
+  }
+}
+
+.va-mts-ua {
+  &:before {
+    content: $va-mts-ua;
+  }
+}
+
+.va-mts-logo-ua {
+  &:before {
+    content: $va-mts-logo-ua;
+  }
+}
+
+.va-vodafone-sign {
+  &:before {
+    content: $va-vodafone-sign;
+  }
+}
+
+.va-vodafone {
+  &:before {
+    content: $va-vodafone;
+  }
+}
+
+.va-vodafone-logo {
+  &:before {
+    content: $va-vodafone-logo;
+  }
+}
+
+.va-mirra-logo {
+  &:before {
+    content: $va-mirra-logo;
+  }
+}
+
+.va-kflex-sign {
+  &:before {
+    content: $va-kflex-sign;
+  }
+}
+
+.va-kflex {
+  &:before {
+    content: $va-kflex;
+  }
+}
+
+.va-kflex-logo {
+  &:before {
+    content: $va-kflex-logo;
+  }
+}

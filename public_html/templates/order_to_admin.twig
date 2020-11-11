@@ -1,0 +1,18 @@
+Заказ №{{ number }} / {{ date }} /
+
+Покупатель: {{ person }}
+Телефон: {{ phone }}, e-mail: {{ email }}
+Доставка: {{ delivery }}
+{{ city }}, {% autoescape false %}{{ address }}{% endautoescape %}
+
+Название и цена товара
+{% for product in items %}
+  --
+  {{ product.title }} / Артикул №{{ product.nomenclature }}
+  {{ product.volume }}
+  Цена: {{ product.price - product.discount }} грн.
+  Количество: {{ product.quantity }} шт.
+  Стоимость: {{ (product.price - product.discount) * product.quantity }} грн.
+{% endfor %}
+--
+Сумма, (без учёта стоимости доставки): {{ total }} грн.

@@ -1,0 +1,47 @@
+{% extends "default.twig" %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if content.body %}
+    {% autoescape false %}{{ content.body }}{% endautoescape %}
+  {% endif %}
+  {% if sorted %}
+    <div class="nav__pages">
+      <div class="nav__pages__left">
+        <ul class="pagination">
+          <li {% if sorted.current == '' %}class="active"{% endif %}><a href="{{ current }}">По дате</a></li>
+          <li {% if sorted.current == 'headline' %}class="active"{% endif %}><a href="{{ current }}?sort=headline">По
+              названию</a></li>
+        </ul>
+      </div>
+      {% if pagination %}
+        <div class="nav__pages__right">
+          <ul class="pagination">
+            {% for item in pagination.items %}
+              <li {% if item.url == pagination.current %}class="active"{% endif %}><a
+                    href="{{ item.url }}{{ sorted.value }}">{{ item.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if interesting %}
+    {% for item in interesting.items %}
+      <div class="news_item clear_fix">
+        <h2><a href="{{ item.url }}" target="_self">{% autoescape false %}{{ item.title }}{% endautoescape %}</a></h2>
+        {% if item.notice %}
+          {% autoescape false %}{{ item.notice }}{% endautoescape %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "default.twig" %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div class="refactor">
+    <div class="chooser_block">
+      <h1>{{ content.chooser }}</h1>
+      <p class="chooser_block_nav align_text__right"><a class="button__chooser" href="/chooser">Пройти диагностику ещё
+          раз</a></p>
+      {% for section in content.sections %}
+        <h2><i class="fa fa-sticky-note-o"></i> {{ section.title }}</h2>
+        {% for item in section.items %}
+
+          <div class="item">
+            <div class="photo">
+              <a href="{{ item.url }}" target="_blank"><img src="/images/products/{{ item.nomenclature }}.png"></a>
+            </div>
+            <div class="info">
+              <h3><a href="{{ item.url }}" target="_blank">{{ item.title }}</a></h3>
+              <p><span class="number">Арт. № {{ item.nomenclature }}</span></p>
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+      <p class="chooser_block_nav align_text__center"><a class="button__chooser" href="/chooser">Пройти диагностику ещё
+          раз</a></p>
+    </div>
+  </div>
+
+{% endblock %}

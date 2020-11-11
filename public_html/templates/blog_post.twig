@@ -1,0 +1,35 @@
+{% extends "default.twig" %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div class="refactor">
+    {% autoescape false %}{{ content.body }}{% endautoescape %}
+    {% if mode.developing == false %}
+      <p>Если вы считаете, что эта статья будет полезна&nbsp;&mdash; поделитесь ею в социальных сетях.</p>
+      <div class="block__links">
+        <div>
+          {# Google "Поделиться"#}
+          <div class="g-plus" data-action="share"></div>
+        </div>
+        <div>
+          {# Facebook "Поделиться"#}
+          <div class="fb-share-button" data-href="http://mirra.biz.ua{{ current }}" data-layout="button"
+               data-size="small" data-mobile-iframe="true"><a target="_blank"
+                                                              href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmirra.biz.ua{{ current|url_encode }}&amp;src=sdkpreparse"
+                                                              class="fb-xfbml-parse-ignore">Поделиться</a></div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div id="appComments">
+    <comments :content-type="'post'" :content-item="{{ content.id }}"></comments>
+  </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "default.twig" %}
+
+{% block sidebar_left_top %}
+  {% if menu_faq %}
+    <div class="block_left">
+      <p class="menu_header_left">{{ menu_faq.title }}</p>
+      {% for item in menu_faq.items %}
+        <a href="{{ item.url }}"
+           class="{% if current == item.url %}menu_item_left_current{% else %}menu_item_left{% endif %}">{{ item.title }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <p class="p_h1">{{ content.title }}</p>
+  {% if chain %}
+    <div class="chain">
+      {% for item in chain.items %}
+        {% if loop.last %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a>
+        {% else %}<a href="{{ item.url }}" class="chain_link">{{ item.title }}</a> • {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if content.body %}
+    {% autoescape false %}{{ content.body }}{% endautoescape %}
+  {% endif %}
+  {% if sorted %}
+    <div class="nav__pages">
+      <div class="nav__pages__left">
+        <ul class="pagination">
+          <li {% if sorted.current == '' %}class="active"{% endif %}><a href="{{ current }}">По дате</a></li>
+          <li {% if sorted.current == 'headline' %}class="active"{% endif %}><a href="{{ current }}?sort=headline">По
+              названию</a></li>
+        </ul>
+      </div>
+      {% if pagination %}
+        <div class="nav__pages__right">
+          <ul class="pagination">
+            {% for item in pagination.items %}
+              <li {% if item.url == pagination.current %}class="active"{% endif %}><a
+                    href="{{ item.url }}{{ sorted.value }}">{{ item.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if questions %}
+    {% for item in questions.items %}
+      <div class="goods_item">
+        <div class="question_sign">&nbsp;</div>
+        <div class="question_block">
+          <div class="question_text">
+            {% autoescape false %}{{ item.question }}{% endautoescape %}
+          </div>
+          <div class="question_answer" style="display:none"><p>Рекомендуемая последовательность проведения курсов:</p>
+            {% autoescape false %}{{ item.answer }}{% endautoescape %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

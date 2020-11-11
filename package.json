@@ -1,0 +1,51 @@
+{
+  "name": "mirra.biz.ua.local",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --progress --optimize-minimize",
+    "dev": "cross-env NODE_ENV=development webpack",
+    "watch": "cross-env NODE_ENV=development webpack -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "fancybox": "^3.0.1",
+    "font-awesome-sass": "^4.7.0",
+    "jquery": "^3.5.1",
+    "slick-carousel": "^1.8.1",
+    "vee-validate": "^2.2.15",
+    "vue": "^2.6.12",
+    "vue-tinymce-editor": "^1.6.2",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "ajv": "^6.12.6",
+    "assets-webpack-plugin": "^3.9.12",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "compass": "^0.1.1",
+    "compass-mixins": "^0.12.10",
+    "cross-env": "^5.2.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.14.1",
+    "resolve-url-loader": "^2.3.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "vue-loader": "^14.2.4",
+    "vue-server-renderer": "^2.6.12",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^3.12.0"
+  }
+}
